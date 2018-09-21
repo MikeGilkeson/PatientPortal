@@ -1,0 +1,117 @@
+﻿[
+  {
+    "ID": 1,
+    "FirstName": "George",
+    "LastName": "Washington",
+    "DateOfBirth": "02/22/1732",
+    "Gender": "M",
+    "EthnicityCode": "2110-5",
+    "Visits": [
+      {
+        "ID": 101,
+        "VisitDate": "6/6/2016",
+        "Reason": "checkup"
+      },
+      {
+        "ID": 102,
+        "VisitDate": "6/12/2017",
+        "Reason": "checkup"
+      },
+      {
+        "ID": 103,
+        "VisitDate": "6/4/2018",
+        "Reason": "checkup"
+      }
+    ]
+  },
+  {
+    "ID": 2,
+    "FirstName": "Marcus",
+    "LastName": "Mariota",
+    "DateOfBirth": "10/30/1993",
+    "Gender": "M",
+    "EthnicityCode": "2080-0",
+    "Visits": [
+      {
+        "ID": 201,
+        "VisitDate": "3/16/2016",
+        "Reason": "checkup"
+      },
+      {
+        "ID": 202,
+        "VisitDate": "4/10/2017",
+        "Reason": "checkup"
+      }
+    ]
+  },
+  {
+    "ID": 3,
+    "FirstName": "Victoria",
+    "LastName": "Ka'iulani",
+    "DateOfBirth": "10/16/1875",
+    "Gender": "F",
+    "EthnicityCode": "2079-2",
+    "Visits": [
+      {
+        "ID": 301,
+        "VisitDate": "1/19/2017",
+        "Reason": "sick visit"
+      },
+      {
+        "ID": 302,
+        "VisitDate": "6/30/2017",
+        "Reason": "checkup"
+      },
+      {
+        "ID": 303,
+        "VisitDate": "8/17/2018",
+        "Reason": "checkup"
+      }
+    ]
+  },
+  {
+    "ID": 4,
+    "FirstName": "Venus",
+    "LastName": "Williams",
+    "DateOfBirth": "6/17/1980",
+    "Gender": "F",
+    "EthnicityCode": "2054-5",
+    "Visits": [
+      {
+        "ID": 401,
+        "VisitDate": "6/13/2017",
+        "Reason": "checkup"
+      },
+      {
+        "ID": 402,
+        "VisitDate": "9/30/2017",
+        "Reason": "sick visit"
+      },
+      {
+        "ID": 403,
+        "VisitDate": "11/14/2017",
+        "Reason": "sick visit"
+      },
+      {
+        "ID": 404,
+        "VisitDate": "6/25/2018",
+        "Reason": "checkup"
+      }
+    ]
+  },
+  {
+    "ID": 5,
+    "FirstName": "David",
+    "LastName": "Ortiz",
+    "DateOfBirth": "11/18/1975",
+    "Gender": "M",
+    "EthnicityCode": "2069-3",
+    "Visits": [
+      {
+        "ID": 501,
+        "VisitDate": "5/31/2018",
+        "Reason": "checkup"
+      }
+    ]
+  }
+]

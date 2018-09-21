@@ -1,0 +1,7 @@
+PatientsPortalApi/.vs/
+*.user
+PatientsPortalApi/PatientsPortal.Tests/bin/Debug/netcoreapp2.1/PatientsPortal.dll
+PatientsPortalApi/PatientsPortal.Tests/bin/
+PatientsPortalApi/PatientsPortal.Tests/obj/
+PatientsPortalApi/PatientsPortal/bin/
+PatientsPortalApi/PatientsPortal/obj/
