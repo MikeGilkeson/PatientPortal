@@ -1,0 +1,32 @@
+<div *ngIf="patients">
+  <div *ngFor='let patient of patients'>
+    <div class="card" style="width: 50%;">
+      <div>
+        Patient Name
+      </div>
+      <span class="card-block-title">{{patient.lastName}}, {{patient.firstName}}</span>
+      <div>
+          Gender
+        </div>
+        <span class="card-block-title">{{patient.gender | gender}}</span>
+        <div>
+          Age
+        </div>
+        <span class="card-block-title" *ngIf='patient.lastVisit'>{{patient.dateOfBirth | age}}</span>
+        <span class="card-block-title" *ngIf='!patient.lastVisit'>--</span>
+        <div>
+        Last Visit
+      </div>
+      <span class="card-block-title" *ngIf='patient.lastVisit'>{{patient.lastVisit | date}}</span>
+      <span class="card-block-title" *ngIf='!patient.lastVisit'>--</span>
+      <div>
+        Next Visit
+      </div>
+      <span class="card-block-title" *ngIf='patient.nextVisit'>{{patient.nextVisit | date}}</span>
+      <span class="card-block-title" *ngIf='!patient.nextVisit'>--</span>
+    </div>
+  </div>
+</div>
+<div *ngIf="!patients">
+  {{message}}
+</div>
