@@ -1,32 +1,32 @@
-<div *ngIf="patients">
-  <div *ngFor='let patient of patients'>
-    <div class="card" style="width: 50%;">
-      <div>
-        Patient Name
-      </div>
-      <span class="card-block-title">{{patient.lastName}}, {{patient.firstName}}</span>
-      <div>
-          Gender
-        </div>
-        <span class="card-block-title">{{patient.gender | gender}}</span>
-        <div>
-          Age
-        </div>
-        <span class="card-block-title" *ngIf='patient.lastVisit'>{{patient.dateOfBirth | age}}</span>
-        <span class="card-block-title" *ngIf='!patient.lastVisit'>--</span>
-        <div>
-        Last Visit
-      </div>
-      <span class="card-block-title" *ngIf='patient.lastVisit'>{{patient.lastVisit | date}}</span>
-      <span class="card-block-title" *ngIf='!patient.lastVisit'>--</span>
-      <div>
-        Next Visit
-      </div>
-      <span class="card-block-title" *ngIf='patient.nextVisit'>{{patient.nextVisit | date}}</span>
-      <span class="card-block-title" *ngIf='!patient.nextVisit'>--</span>
-    </div>
-  </div>
-</div>
 <div *ngIf="!patients">
-  {{message}}
+
+  <mat-card class="card">
+    <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+      <h3>Patients</h3>
+    </mat-card-title>
+    <mat-card-content>
+      <div class="patient-container mat-elevation-z8">
+        <mat-table #table [dataSource]="dataSource">
+          <ng-container matColumnDef="lastName">
+            <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="firstName">
+            <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="lastVisit">
+            <mat-header-cell *matHeaderCellDef> Last Visit </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.lastVisit | date}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="nextVisit">
+            <mat-header-cell *matHeaderCellDef> Next Visit </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.nextVisit | date}} </mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;" (click)='showDetails(row)' style="cursor:pointer;" ></mat-row>
+        </mat-table>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </div>

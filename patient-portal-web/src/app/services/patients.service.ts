@@ -24,4 +24,8 @@ export class PatientsService {
   query(req?: any): Observable<PatientArrayResponseType> {
     return this.http.get<Patient[]>(this.resourceUrl, {  observe: 'response' });
   }
+
+  queryPatients(req?: any): Observable<Patient[]> {
+    return this.http.get<Patient[]>(this.resourceUrl);
+  }
 }
