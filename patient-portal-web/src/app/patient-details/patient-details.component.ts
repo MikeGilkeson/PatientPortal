@@ -12,7 +12,7 @@ import {Patient} from '../models/patient.model';
 })
 export class PatientDetailsComponent implements OnInit {
   private errors: string;
-  private patient: Patient;
+  patient: Patient;
   constructor(
     private activatedRoute: ActivatedRoute,
     private service: PatientsService

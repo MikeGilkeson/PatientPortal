@@ -15,7 +15,7 @@ import {Observable} from 'rxjs/Observable';
   styleUrls: ['./patients.component.css']
 })
 export class PatientsComponent implements OnInit {
-  private patients: Patient[];
+  patients: Patient[];
   private message: string = "Loading";
   constructor(private patientService: PatientsService,
     private router: Router) { }
