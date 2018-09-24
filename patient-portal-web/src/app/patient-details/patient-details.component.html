@@ -1,0 +1,36 @@
+<div *ngIf='!patient'>Loading...</div>
+<mat-card *ngIf='patient' class="patient-view-card">
+  <div *ngFor='let alert of patient.alerts'>
+    <mat-toolbar color='{{alert.item1}}'>
+      <mat-toolbar-row class="md-toolbar-tools">
+        <h2 class="md-flex">{{alert.item2}}</h2>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+  <mat-card-header>
+    <mat-card-title>{{patient.firstName}} {{patient.lastName}}</mat-card-title>
+    <mat-card-subtitle>{{patient.gender | gender}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-grid-list cols="4" rowHeight="100px">
+      <mat-grid-tile>
+        <div class="text-inside-grid">Date of Birth<br>{{patient.dateOfBirth | date}} - {{patient.dateOfBirth | age}}</div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+          <div class="text-inside-grid">Ethnicity Code<br>{{patient.ethnicityCode}}</div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+          <div class="text-inside-grid">Last Visit<br>{{patient.lastVisit | date}}</div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+          <div class="text-inside-grid">Next Visit<br>{{patient.nextVisit | date}}</div>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <br>
+    <mat-divider [inset]="true"></mat-divider>
+    <h4 class="prev-visit-header">Previous Visits</h4>
+    <mat-nav-list>
+      <a mat-list-item *ngFor="let visit of patient.visits"> {{ visit.visitDate | date }} - {{visit.reason}} </a>
+    </mat-nav-list>
+  </mat-card-content>
+</mat-card>

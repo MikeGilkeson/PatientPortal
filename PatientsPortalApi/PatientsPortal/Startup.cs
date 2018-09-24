@@ -13,6 +13,7 @@ using PatientsPortal.AlertRules;
 using PatientsPortal.DataContext;
 using PatientsPortal.ErrorHandling;
 using PatientsPortal.Models;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace PatientsPortal
 {
@@ -28,11 +29,19 @@ namespace PatientsPortal
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             // add Patients Context as in memory db, for real app this would connect to physical db
             services.AddDbContext<IPatientsContext, PatientsContext>(opt => opt.UseInMemoryDatabase("patients"));
             // add alert rules object
             services.AddTransient<IAlertRules, AlertRules.AlertRules>();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddJsonOptions(x => x.SerializerSettings.ReferenceLoopHandling =
+                    ReferenceLoopHandling.Ignore);
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "PatientsPortal.Api", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +55,7 @@ namespace PatientsPortal
             {
                 app.UseHsts();
             }
+            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
             using (var serviceScope = app.ApplicationServices.CreateScope())
             {
@@ -54,7 +64,16 @@ namespace PatientsPortal
             }
 
             app.UseHttpsRedirection();
+
             app.UseMiddleware(typeof(ErrorHandlingMiddleware));
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "MTA.Server.Admin.Api V1");
+            });
             app.UseMvc();
         }
 
